@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
-public class CepDetails implements Serializable{
+public class Address implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
