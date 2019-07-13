@@ -1,0 +1,10 @@
+1. Para criar a api eu remodelaria o design da aplicação para padrão MVC. Criaria um controller que teria os endpoints e 
+e faria injeção de dependencia com a classe de serviço (ProcessRuleService);
+2. Depois coloco todas as regras de negocio nesse serviço;
+3. Crio mais uma classe de serviço, mas para funcionar como webservice pois iria receber e enviar dados para a api externa de cep;
+4. Em termos de codigo troco for comum por um enhanced for:
+
+	//for (Integer integer : counters) {
+			//...
+	//}
+5. Encapsulo as variaveis que estão sem o private;

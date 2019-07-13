@@ -31,6 +31,9 @@ public class EntityFactory {
 				return;
 			}
 		}
+		for (Integer integer : counters) {
+			
+		}
 
 		int calls = 0;
 		while (calls++ > countMaxCalls) {
