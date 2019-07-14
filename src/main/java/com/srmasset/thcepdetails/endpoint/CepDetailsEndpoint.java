@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.srmasset.thcepdetails.model.Address;
 import com.srmasset.thcepdetails.service.CepDetailsService;
 
@@ -33,6 +35,8 @@ public class CepDetailsEndpoint {
 	@Autowired
 	private CepDetailsService service;
 
+	@HystrixCommand(fallbackMethod = "fallbackFindCepDetails", commandProperties = {
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000") })
 	@GetMapping("/{cep}")
 	@ResponseStatus(HttpStatus.OK)
 	public ResponseEntity<?> findCepDetails(@PathVariable String cep) {
@@ -56,6 +60,8 @@ public class CepDetailsEndpoint {
 		}
 	}
 
+	@HystrixCommand(fallbackMethod = "fallbackFindCepList", commandProperties = {
+			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000") })
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ResponseEntity<?> findCepList(@Valid @RequestBody List<String> ceps) {
@@ -81,5 +87,17 @@ public class CepDetailsEndpoint {
 			LOGGER.error(ExceptionUtils.getRootCauseMessage(e));
 			throw new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR, e.getCause().getMessage());
 		}
+	}
+
+	private ResponseEntity<?> fallbackFindCepDetails(@PathVariable String cep) {
+		LOGGER.info("Service is taking a long time to respond. Check.");
+		String response = "Request failed. It's taking a long time to respond.";
+		return ResponseEntity.badRequest().body(response);
+	}
+
+	private ResponseEntity<?> fallbackFindCepList(@Valid @RequestBody List<String> ceps) {
+		LOGGER.info("Service is taking a long time to respond. Check.");
+		String response = "Request failed. It's taking a long time to respond.";
+		return ResponseEntity.badRequest().body(response);
 	}
 }
