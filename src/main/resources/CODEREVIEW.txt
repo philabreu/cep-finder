@@ -1,10 +1,15 @@
-1. Para criar a api eu remodelaria o design da aplicação para padrão MVC. Criaria um controller que teria os endpoints e 
-e faria injeção de dependencia com a classe de serviço (ProcessRuleService);
-2. Depois coloco todas as regras de negocio nesse serviço;
-3. Crio mais uma classe de serviço, mas para funcionar como webservice pois iria receber e enviar dados para a api externa de cep;
-4. Em termos de codigo troco for comum por um enhanced for:
+Respostas das perguntas:
 
-	//for (Integer integer : counters) {
-			//...
-	//}
-5. Encapsulo as variaveis que estão sem o private;
+1. 
+	- Criar a api eu remodelando o design da aplicação para padrão MVC. Criar um controller que teria os endpoints e 
+	  e faria injeção de dependencia com a classe de serviço;
+	- Colocar todas as regras de negocio nesse serviço;
+	- Criar mais uma classe de serviço, mas para funcionar como webservice pois iria receber e enviar dados para a api externa de cep;
+	- Em termos de codigo troco for comum por um enhanced for ou foreach quando possível:
+	- Encapsular as variaveis que estão sem o private;
+
+2. Sim, actuator.
+4. Sim, foi comentado na codigo correspondente
+6. Coloquei uma mensagem para exibir ao usuario e fiz logging do trecho correspondente na app.
+
+obs: teste iniciado no dia 12/07 e finalizado 14/07

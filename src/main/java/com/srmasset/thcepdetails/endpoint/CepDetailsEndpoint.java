@@ -9,6 +9,7 @@ import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,7 @@ public class CepDetailsEndpoint {
 
 	@Autowired
 	private CepDetailsService service;
-
+	
 	@HystrixCommand(fallbackMethod = "fallbackFindCepDetails", commandProperties = {
 			@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000") })
 	@GetMapping("/{cep}")
@@ -90,13 +91,13 @@ public class CepDetailsEndpoint {
 	}
 
 	private ResponseEntity<?> fallbackFindCepDetails(@PathVariable String cep) {
-		LOGGER.info("Service is taking a long time to respond. Check.");
+		LOGGER.info("Service https://zuul.trusthub.com.br/orchestrator/v1/obter-endereco-por-cep/ is taking a long time to respond.");
 		String response = "Request failed. It's taking a long time to respond.";
 		return ResponseEntity.badRequest().body(response);
 	}
 
 	private ResponseEntity<?> fallbackFindCepList(@Valid @RequestBody List<String> ceps) {
-		LOGGER.info("Service is taking a long time to respond. Check.");
+		LOGGER.info("Service https://zuul.trusthub.com.br/orchestrator/v1/obter-endereco-por-cep/ is taking a long time to respond.");
 		String response = "Request failed. It's taking a long time to respond.";
 		return ResponseEntity.badRequest().body(response);
 	}
