@@ -1,11 +1,5 @@
-# TESTE BACKEND 2.0
+# Buscador de cep 2.0
 
-Estamos disponibilizando para você um projeto REST Maven em Java muito parecido com o que usamos aqui na Trust:  https://github.com/desafioTrust/desafio-candidato-dev-backend
-
-PASSO A PASSO PARA REALIZAÇÃO DO TESTE
-Crie um repositório privado no GitHub.com a partir de um fork do projeto desafio-candidato-dev-backend. Você também deve adicionar o usuário **desafioTrust** como colaborador deste repositório privado, para que possamos fazer a avaliação.
-
-Execute as atividades abaixo, mostre seu potencial e ajude a gente a conhecer melhor o profissional que você é. As atividades 1, 2 e 3 são para perfis Junior e Pleno; as posições Pleno e Sênior deverão responder todas as questões. **Boa sorte!**
 
 1) **Code Review:** <br/>
 Precisamos que você revise nosso código, sendo assim, por favor avalie o que está no projeto de teste desafio-candidato-dev-backend de acordo com os critérios de: **padrões de projeto, boas práticas, padrões Rest de nomenclatura e codificação**. Monte um **src/main/resources/CODEREVIEW.txt** com seus comentários. Aponte tudo o que você achar errado/estranho em todo o projeto.
