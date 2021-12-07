@@ -1,1 +1,1 @@
-rootProject.name = "cep-finder"
+rootProject.name = "cepfinder"

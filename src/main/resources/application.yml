@@ -1,6 +1,0 @@
-server:
-  port: 8585
-eureka:
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
