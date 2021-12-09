@@ -17,7 +17,7 @@ class CepfinderResource {
 
     @GetMapping("/{cep}")
     fun findCepDetails(@PathVariable cep: String): ResponseEntity<Address> {
-        var address: Address? = service.find(cep)
+        val address = service.find(cep)
         if (isNull(address)) {
             return ResponseEntity.notFound().build()
         }
@@ -27,7 +27,11 @@ class CepfinderResource {
 
     @PostMapping
     fun findCepList(@Valid @RequestBody ceps: List<String>): ResponseEntity<List<Address>> {
-        var addressList = arrayListOf<Address>()
+        val addressList = arrayListOf<Address>()
+
+        if(ceps.isEmpty()){
+            return ResponseEntity.notFound().build()
+        }
 
         ceps.forEach { cep ->
             addressList.add(service.find(cep))
@@ -36,4 +40,3 @@ class CepfinderResource {
         return ResponseEntity.ok().body(addressList)
     }
 }
-

@@ -14,8 +14,7 @@ class CepfinderService {
     private lateinit var url: String
 
     fun find(@PathVariable("cep") cep: String): Address {
-        var fullPath = url + cep
-        val address = RestTemplate().getForObject(fullPath, Address::class.java)!!
+        val address = RestTemplate().getForObject(url + cep, Address::class.java)!!
 
         if (isNull(address.estado)) {
             throw RuntimeException("sem estado cadastrado")
