@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.client.RestTemplate
-import java.util.Objects.isNull
 
 @Service
 class CepfinderService {
@@ -14,12 +13,6 @@ class CepfinderService {
     private lateinit var url: String
 
     fun find(@PathVariable("cep") cep: String): Address {
-        val address = RestTemplate().getForObject(url + cep, Address::class.java)!!
-
-        if (isNull(address.estado)) {
-            throw RuntimeException("sem estado cadastrado")
-        }
-
-        return address
+        return RestTemplate().getForObject(url + cep, Address::class.java)!!
     }
 }
