@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  api:
+    restart: 'no'
+    build:
+      context: .
+    environment:
+      TZ: America/Sao_Paulo
+    ports:
+      - 8080:8080
+    networks:
+      - rede
+networks:
+  rede:
+    driver: bridge
